@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dubbo="http://repo.alibaba-inc.com/schema/dubbo"
+	xsi:schemaLocation="http://repo.alibaba-inc.com/schema/dubbo http://repo.alibaba-inc.com/schema/dubbo/dubbo-component.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<bean id="helloWorld.local" class="com.mitch3.test.dubbo4hsf.server.HelloWorld"/>
+	
+	<dubbo:service id="helloWorld.dubbo"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld" version="1.0.0.pangl.dubbo"
+		ref="helloWorld.local"/>
+		
+	<bean id="helloWorld.hsf" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld"/>
+		<property name="serviceVersion" value="1.0.0.pangl.hsf"/>
+		<property name="target" ref="helloWorld.local"/>
+	</bean>
+		
+</beans>

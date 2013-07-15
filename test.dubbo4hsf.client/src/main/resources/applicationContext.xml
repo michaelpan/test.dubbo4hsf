@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dubbo="http://repo.alibaba-inc.com/schema/dubbo"
+	xsi:schemaLocation="http://repo.alibaba-inc.com/schema/dubbo http://repo.alibaba-inc.com/schema/dubbo/dubbo-component.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<dubbo:registry protocol="hsf" id="hsf" default="false" />
+	
+	<dubbo:reference id="helloWorld.hsf"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld"
+		version="1.0.0.pangl.hsf" check="false" registry="hsf" protocol="hsf"/>
+		
+	<dubbo:reference id="helloWorld.dubbo"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld"
+		version="1.0.0.pangl.dubbo"/>
+		
+</beans>

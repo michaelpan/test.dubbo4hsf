@@ -1,0 +1,6 @@
+com.mitch3:test.dubbo4hsf.api:jar:0.0.1-SNAPSHOT
+\- com.alibaba.external:sourceforge.spring:jar:2.5.6:compile
+   +- com.alibaba.external:jakarta.commons.logging:jar:0.0.0:compile
+   \- com.alibaba.external:sourceforge.cglib:jar:0.0.0:compile
+      \- com.alibaba.external:objectweb.asm.attrs:jar:0.0.0:compile
+         \- com.alibaba.external:objectweb.asm:jar:0.0.0:compile
