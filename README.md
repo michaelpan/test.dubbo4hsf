@@ -21,3 +21,5 @@ HSF2.0开始，有三种配置方式可以向外暴露一个服务接口：
 - 下载代码，使用maven进行编译打包
 - 执行test.dubbo4hsf.server工程中*com.mitch3.test.dubbo4hsf.server.Bootstrap*类的main方法
 - 执行test.dubbo4hsf.client工程中*com.mitch3.test.dubb4hsf.client.TestClient*类中的Junit测试方法
+
+**项目地址** [https://github.com/michaelpan/test.dubbo4hsf]<https://github.com/michaelpan/test.dubbo4hsf>
