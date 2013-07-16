@@ -7,21 +7,12 @@
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 			http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<dubbo:application name="Test.Dubbo4HSF.Client" />
-	<dubbo:registry protocol="hsf" id="hsf" default="false" />
+	<dubbo:application name="HelloWorld.Dubbo4HSF.Client" />
 	<dubbo:registry address="10.20.141.150:9090" default="true"/>
 	
-	<dubbo:reference id="helloWorld.dubbo-hsf"
-		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld" 
-		version="1.0.0.pangl.hsf" registry="hsf" protocol="hsf"/>
-		
-	<dubbo:reference id="helloWorld.dubbo"
-		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld"
-		version="1.0.0.pangl.dubbo"/>
-	
-	<bean id="helloWorld.hsf" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean">
-		<property name="interfaceName" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld"/>
-		<property name="version" value="1.0.0.pangl.dubbo-hsf"/>
+	<bean id="helloWorld.hsf4dubbo" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean">
+		<property name="interfaceName" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld1"/>
+		<property name="version" value="1.0.0.pangl.dubbo"/>
 	</bean>
 		
 </beans>

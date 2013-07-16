@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:dubbo="http://repo.alibaba-inc.com/schema/dubbo"
+	xsi:schemaLocation="http://repo.alibaba-inc.com/schema/dubbo http://repo.alibaba-inc.com/schema/dubbo/dubbo-component.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<dubbo:application name="HelloWorld.Dubbo4HSF.Client" />
+	<dubbo:registry address="10.20.141.150:9090" default="true"/>
+	
+	
+	<dubbo:reference id="helloWorld.dubbo"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld1"
+		version="1.0.0.pangl"/>
+		
+	<dubbo:reference id="helloWorld.dubbo4hsf1"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld2" 
+		version="1.0.0.pangl" protocol="hsf"/>
+	
+	<dubbo:reference id="helloWorld.dubbo4hsf2"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld3" 
+		version="1.0.0.pangl" protocol="hsf"/>
+	
+	<bean id="helloWorld.hsf1" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean">
+		<property name="interfaceName" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld2"/>
+		<property name="version" value="1.0.0.pangl"/>
+	</bean>
+	
+	<bean id="helloWorld.hsf2" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean">
+		<property name="interfaceName" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld3"/>
+		<property name="version" value="1.0.0.pangl"/>
+	</bean>
+	
+</beans>

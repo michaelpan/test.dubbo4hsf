@@ -7,20 +7,27 @@
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 			http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 	
-	<dubbo:registry protocol="hsf" id="hsf" default="false" />
-	<bean id="helloWorld.local" class="com.mitch3.test.dubbo4hsf.server.HelloWorld"/>
+	<dubbo:application name="HelloWorld.Dubbo4HSF.Server" />
+	<dubbo:registry address="10.20.141.150:9090" default="true"/>
+	<bean id="helloWorld1.local" class="com.mitch3.test.dubbo4hsf.server.HelloWorld1"/>
+	<bean id="helloWorld2.local" class="com.mitch3.test.dubbo4hsf.server.HelloWorld2"/>
+	<bean id="helloWorld3.local" class="com.mitch3.test.dubbo4hsf.server.HelloWorld3"/>
 	
 	<dubbo:service id="helloWorld.dubbo"
-		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld" version="1.0.0.pangl.dubbo"
-		ref="helloWorld.local"/>
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld1" 
+		version="1.0.0.pangl"
+		ref="helloWorld1.local"/>
 		
 	<bean id="helloWorld.hsf" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
-		<property name="serviceInterface" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld"/>
-		<property name="serviceVersion" value="1.0.0.pangl.hsf"/>
-		<property name="target" ref="helloWorld.local"/>
+		<property name="serviceInterface" value="com.mitch3.test.dubbo4hsf.api.IHelloWorld2"/>
+		<property name="serviceVersion" value="1.0.0.pangl"/>
+		<property name="target" ref="helloWorld2.local"/>
 	</bean>
 	
-	<dubbo:service interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld" ref="helloWorld.local"
-		registry="hsf" protocol="hsf" version="1.0.0.pangl.dubbo-hsf"/>
+	<dubbo:service id="helloWorld.dubbo-hsf"
+		interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld3" 
+		protocol="hsf" 
+		version="1.0.0.pangl"
+		ref="helloWorld3.local"/>
 		
 </beans>
