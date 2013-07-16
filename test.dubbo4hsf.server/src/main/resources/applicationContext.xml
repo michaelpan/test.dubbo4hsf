@@ -6,7 +6,8 @@
 	xsi:schemaLocation="http://repo.alibaba-inc.com/schema/dubbo http://repo.alibaba-inc.com/schema/dubbo/dubbo-component.xsd
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 			http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
-
+	
+	<dubbo:registry protocol="hsf" id="hsf" default="false" />
 	<bean id="helloWorld.local" class="com.mitch3.test.dubbo4hsf.server.HelloWorld"/>
 	
 	<dubbo:service id="helloWorld.dubbo"
@@ -18,5 +19,8 @@
 		<property name="serviceVersion" value="1.0.0.pangl.hsf"/>
 		<property name="target" ref="helloWorld.local"/>
 	</bean>
+	
+	<dubbo:service interface="com.mitch3.test.dubbo4hsf.api.IHelloWorld" ref="helloWorld.local"
+		registry="hsf" protocol="hsf" version="1.0.0.pangl.dubbo-hsf"/>
 		
 </beans>

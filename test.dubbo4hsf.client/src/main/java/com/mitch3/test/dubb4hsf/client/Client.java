@@ -13,13 +13,19 @@ public class Client {
 		context.start();
 		try {
 			IHelloWorld dubboBean = (IHelloWorld) context.getBean("helloWorld.dubbo");
+			Thread.sleep(3000);
 			String dubboResult = dubboBean.hello("dubbo");
 			System.out.println(dubboResult);
 			
 			
 			IHelloWorld hsfBean = (IHelloWorld) context.getBean("helloWorld.hsf");
+			Thread.sleep(3000);
 			String hsfResult = hsfBean.hello("HSF");
 			System.out.println(hsfResult);
+			
+			IHelloWorld dubboHsfBean = (IHelloWorld) context.getBean("helloWorld.dubbo-hsf");
+			String dubboHsfResult = dubboHsfBean.hello("Dubbo-HSF");
+			System.out.println(dubboHsfResult);
 		} finally {
 			System.exit(0);
 		}
