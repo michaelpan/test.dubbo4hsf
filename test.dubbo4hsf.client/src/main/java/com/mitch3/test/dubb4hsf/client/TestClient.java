@@ -72,6 +72,24 @@ public class TestClient extends TestCase{
 	}
 	
 	/**
+	 * 测试以HSFSpringConsumerBean的配置方式访问以Dubbo方式发布的服务
+	 */
+	public void testHSF4DubboRight() throws Exception {
+		ClassPathXmlApplicationContext context = 
+				new ClassPathXmlApplicationContext("applicationContext-hsf4dubbo-right.xml");
+		context.start();
+		try {
+			IHelloWorld1 bean = (IHelloWorld1) context.getBean("helloWorld");
+			Thread.sleep(1000);
+			assertEquals("Hello World1, HSF4Dubbo!",  bean.hello("HSF4Dubbo"));
+		} finally {
+			context.stop();
+			context.destroy();
+		}
+		
+	}
+	
+	/**
 	 * 测试以<dubbo:reference protocol="dubbo">的配置方式访问以HSF服务
 	 */
 	public void testDubbo4HSFWrong() throws Exception {
